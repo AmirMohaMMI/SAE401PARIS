@@ -13,11 +13,6 @@ class EQUIPESeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('EQUIPE')->delete();
-        DB::table('EQUIPE')->insert([
-            'idequipe' => 1,
-            'nom' => 'KCORP'
-            
-        ]);
+        
     }
 }

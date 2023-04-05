@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/joueurs', [App\Http\Controllers\JOUEURSController::class, 'list']);
+
+Route::get('/equipes', [App\Http\Controllers\EQUIPEController::class, 'list']);
+
+Route::get('/utilisateur', [App\Http\Controllers\UTILISATEURController::class, 'list']);
+
+Route::post('/adduti', [App\Http\Controllers\UTILISATEURController::class, 'ajoututi']);
