@@ -25,3 +25,6 @@ Route::get('/equipes', [App\Http\Controllers\EQUIPEController::class, 'list']);
 Route::get('/utilisateur', [App\Http\Controllers\UTILISATEURController::class, 'list']);
 
 Route::post('/adduti', [App\Http\Controllers\UTILISATEURController::class, 'ajoututi']);
+
+Route::post('/parier', [App\Http\Controllers\PARIERController::class, 'Ajoutpari']);
+
