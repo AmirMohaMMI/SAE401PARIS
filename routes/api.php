@@ -24,7 +24,40 @@ Route::get('/equipes', [App\Http\Controllers\EQUIPEController::class, 'list']);
 
 Route::get('/utilisateur', [App\Http\Controllers\UTILISATEURController::class, 'list']);
 
+
+//// TOURNOIS
+
+Route::get('/listetournois',[App\Http\Controllers\TOURNOISController::class, 'ListeTournois']);
+
+Route::post('/ajouttournois',[App\Http\Controllers\TOURNOISController::class, 'AjouterTournois']);
+
+Route::delete('/suprtournois/{idtournois}',[App\Http\Controllers\TOURNOISController::class, 'SupprimerTournois']);
+
+
+//// RENCONTRES 
+
+Route::get('/listerencontres', [App\Http\Controllers\RENCONTREController::class, 'ListeRencontres']);
+
+Route::post('/ajouterrencontres', [App\Http\Controllers\RENCONTREController::class, 'AjouterRencontre']);
+
 Route::post('/adduti', [App\Http\Controllers\UTILISATEURController::class, 'ajoututi']);
 
 Route::post('/parier', [App\Http\Controllers\PARIERController::class, 'Ajoutpari']);
 
+
+//// TOURNOIS
+
+Route::get('/listetournois',[App\Http\Controllers\TOURNOISController::class, 'ListeTournois']);
+
+Route::post('/ajouttournois',[App\Http\Controllers\TOURNOISController::class, 'AjouterTournois']);
+
+Route::delete('/suprtournois/{idtournois}',[App\Http\Controllers\TOURNOISController::class, 'SupprimerTournois']);
+
+
+//// RENCONTRES 
+
+Route::get('/listerencontres', [App\Http\Controllers\RENCONTREController::class, 'ListeRencontres']);
+
+Route::post('/ajouterrencontres', [App\Http\Controllers\RENCONTREController::class, 'AjouterRencontre']);
+
+Route::post('/adduti', [App\Http\Controllers\UTILISATEURController::class, 'ajoututi']);
