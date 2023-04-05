@@ -24,4 +24,8 @@ Route::get('/equipes', [App\Http\Controllers\EQUIPEController::class, 'list']);
 
 Route::get('/utilisateur', [App\Http\Controllers\UTILISATEURController::class, 'list']);
 
+Route::post('/ajouttournois',[App\Http\Controllers\TOURNOISController::class, 'AjouterTournois']);
+
+Route::delete('/suprtournois/{idtournois}',[App\Http\Controllers\TOURNOISController::class, 'SupprimerTournois']);
+
 Route::post('/adduti', [App\Http\Controllers\UTILISATEURController::class, 'ajoututi']);

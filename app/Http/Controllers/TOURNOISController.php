@@ -40,9 +40,15 @@ public function AjouterTournois(Request $request) {
         l'ajout"],400);
         }
             
-
-
 }
 
-
+public function SupprimerTournois($idtournois) {
+    $tournois = Tournois::find($idtournois); 
+    $ok = $tournois->delete();
+    if ($ok) {
+        return response()->json(["status" => 1, "message" => "Tournois supprimé"],201);
+        } else {
+        return response()->json(["status" => 0, "message" => "Erreur, tournois non supprimé"],400);
+        }
+}
 }
