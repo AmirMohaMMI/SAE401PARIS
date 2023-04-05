@@ -23,6 +23,8 @@ class PARIERController extends Controller{
         $pari->Mise = $request->Mise;
         $pari->idequipe = $request->idequipe;        
         $pari->idrencontre = $request->idrencontre;
+        $pari->iduti = $request->iduti;
+        $pari->idtournois = $request->idtournois;
         $ok = $pari->save();
             if ($ok) {
         return response()->json(["status" => 1, "message" => "Votre pari a bien été enregistré"],201);

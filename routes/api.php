@@ -42,7 +42,7 @@ Route::post('/ajouterrencontres', [App\Http\Controllers\RENCONTREController::cla
 
 Route::post('/adduti', [App\Http\Controllers\UTILISATEURController::class, 'ajoututi']);
 
-Route::post('/parier', [App\Http\Controllers\PARIERController::class, 'Ajoutpari']);
+Route::post('/parier', [App\Http\Controllers\PARIERController::class, 'Ajoutepari']);
 
 
 //// TOURNOIS

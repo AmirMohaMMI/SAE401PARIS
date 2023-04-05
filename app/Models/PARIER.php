@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PARIER extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $table = 'PARIER';
     protected $primaryKey = 'idpari';
 }
