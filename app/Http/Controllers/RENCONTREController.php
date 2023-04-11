@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Rencontre;
+use App\Models\RENCONTRE;
 use Validator;
 
 class RENCONTREController extends Controller {
