@@ -24,4 +24,4 @@ jobs:
         remote-host: ssh-lamp.alwaysdata.net
         remote-user: akkyrlouis_1
         remote-password: SAE401PARIS-123
-        remote-path: /home/lamp/www/SAE401
+        remote-path: /home/lamp/www/
