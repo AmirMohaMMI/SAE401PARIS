@@ -23,5 +23,5 @@ jobs:
         remote-protocol: sftp
         remote-host: ssh-akkyrlouis.alwaysdata.net
         remote-user: akkyrlouis
-        remote-password: SAE401123
-        remote-path: /home/www/
+        remote-password: "SAE401123"
+        remote-path: /home/akkyrlouis/www/
