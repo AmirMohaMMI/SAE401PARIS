@@ -33,11 +33,11 @@ Route::post('/adduti', [App\Http\Controllers\UTILISATEURController::class, 'ajou
 
 //// RENCONTRES 
 
-Route::get('/rencontres', [App\Http\Controllers\RENCONTREController::class, 'ListeRencontres']);
+Route::get('/getrencontres', [App\Http\Controllers\RENCONTREController::class, 'ListeRencontres']);
 
-Route::post('/rencontres', [App\Http\Controllers\RENCONTREController::class, 'AjouterRencontre']);
+Route::post('/postrencontres', [App\Http\Controllers\RENCONTREController::class, 'AjouterRencontre']);
 
-Route::put('/rencontres', [App\Http\Controllers\RENCONTREController::class, 'modifierRencontre']);
+Route::put('/putrencontres', [App\Http\Controllers\RENCONTREController::class, 'modifierRencontre']);
 
 Route::post('/parier', [App\Http\Controllers\PARIERController::class, 'Ajoutepari']);
 
