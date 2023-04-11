@@ -14,9 +14,9 @@ class PARIERController extends Controller{
             'Mise' => ['required','numeric'],
              ]);
     
-             if ($validator->fails()) {
-                return response()->json(["status" => 0, "message" => $validator->errors()],400);
-                }
+            //  if ($validator->fails()) {
+            //     return response()->json(["status" => 0, "message" => $validator->errors()],400);
+            //     }
     
         $pari = new PARIER;
         
@@ -24,7 +24,7 @@ class PARIERController extends Controller{
         $pari->idequipe = $request->idequipe;        
         $pari->idrencontre = $request->idrencontre;
         $pari->iduti = $request->iduti;
-        $pari->idtournois = $request->idtournois;
+        // $pari->idtournois = $request->idtournois;
         $ok = $pari->save();
             if ($ok) {
         return response()->json(["status" => 1, "message" => "Votre pari a bien été enregistré"],201);
