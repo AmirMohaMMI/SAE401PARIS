@@ -8,7 +8,7 @@ use Validator;
 use Illuminate\Support\Facades\Log;
 class RENCONTREController extends Controller {
 
-//Liste tous les tournois
+//Liste des rencontres
 // public function ListeRencontres(Request $request)
 // {
 // $rencontre = Rencontre::select('equipe1','equipe2','daterenc','cote_equipe1','cote_equipe2')->get();
@@ -19,16 +19,16 @@ public function ListeRencontres(Request $request)
 {
     $rencontres = Rencontre::select('equipe1','equipe2','daterenc','cote_equipe1','cote_equipe2')->get();
     
-    $tableauRencontres = [];
-
+    $tableauRencontres = array();
+    
     foreach ($rencontres as $rencontre) {
-        array_push($tableauRencontres, [
+        $tableauRencontres[] = array(
             'equipe1' => $rencontre->equipe1,
             'equipe2' => $rencontre->equipe2,
             'daterenc' => $rencontre->daterenc,
             'cote_equipe1' => $rencontre->cote_equipe1,
             'cote_equipe2' => $rencontre->cote_equipe2,
-        ]);
+        );
     }
 
     return response()->json($tableauRencontres);
@@ -45,11 +45,12 @@ public function AjouterRencontre(Request $request) {
     //     'idtournois' => 'required|int',
     //      ]);
 
-         if ($validator->fails()) {
-            return response()->json(["status" => 0, "message" => $validator->errors()],400);
-            }
+        //  if ($validator->fails()) {
+        //     return response()->json(["status" => 0, "message" => $validator->errors()],400);
+        //     }
 
     $rencontre = new Rencontre;
+    
 
     $rencontre->jeux = $request->jeux;
     $rencontre->equipe1 = $request->equipe1;
@@ -65,6 +66,17 @@ public function AjouterRencontre(Request $request) {
         return response()->json(["status" => 0, "message" => "pb lors de
         l'ajout"],400);
         }
+
+}
+
+public function AfficherRechRenc(Request $request) {
+
+$jeux = $request->jeux;
+$rencontre = Rencontre::select('equipe1','equipe2','daterenc','cote_equipe1','cote_equipe2', 'jeux')
+->where('jeux', "like", '%'.$jeux.'%')
+->get();
+return response()->json($rencontre);
+
 
 }
 
