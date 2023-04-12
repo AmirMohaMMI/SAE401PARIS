@@ -6,15 +6,33 @@ use Illuminate\Http\Request;
 use App\Models\RENCONTRE;
 use Validator;
 use Illuminate\Support\Facades\Log;
-
 class RENCONTREController extends Controller {
 
-    public function ListeRencontres(Request $request)
-    {
-    $rencontre = Rencontre::select('idrencontre','jeux','equipe1', 'equipe2', 'cote_equipe1', 'cote_equipe2')->get();
-    return response()->json($rencontre);
+//Liste tous les tournois
+// public function ListeRencontres(Request $request)
+// {
+// $rencontre = Rencontre::select('equipe1','equipe2','daterenc','cote_equipe1','cote_equipe2')->get();
+// return response()->json($rencontre);
+// }
+
+public function ListeRencontres(Request $request)
+{
+    $rencontres = Rencontre::select('equipe1','equipe2','daterenc','cote_equipe1','cote_equipe2')->get();
+    
+    $tableauRencontres = array();
+    
+    foreach ($rencontres as $rencontre) {
+        $tableauRencontres[] = array(
+            'equipe1' => $rencontre->equipe1,
+            'equipe2' => $rencontre->equipe2,
+            'daterenc' => $rencontre->daterenc,
+            'cote_equipe1' => $rencontre->cote_equipe1,
+            'cote_equipe2' => $rencontre->cote_equipe2,
+        );
     }
 
+    return response()->json($tableauRencontres);
+}
 
 public function AjouterRencontre(Request $request) {
 
