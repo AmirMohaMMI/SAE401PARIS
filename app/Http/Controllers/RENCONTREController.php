@@ -17,7 +17,7 @@ class RENCONTREController extends Controller {
 
 public function ListeRencontres(Request $request)
 {
-    $rencontres = Rencontre::select('equipe1','equipe2','daterenc','cote_equipe1','cote_equipe2')->get();
+    $rencontres = Rencontre::select('equipe1','equipe2','daterenc','cote_equipe1','cote_equipe2', 'jeux')->get();
     
     $tableauRencontres = array();
     
@@ -28,6 +28,7 @@ public function ListeRencontres(Request $request)
             'daterenc' => $rencontre->daterenc,
             'cote_equipe1' => $rencontre->cote_equipe1,
             'cote_equipe2' => $rencontre->cote_equipe2,
+            'jeux' => $rencontre->jeux
         );
     }
 

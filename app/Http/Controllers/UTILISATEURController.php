@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\UTILISATEUR;
 use Validator;
@@ -46,25 +46,35 @@ class UTILISATEURController extends Controller{
     }
 
 
+
+
     public function login(Request $request)
-{
-    // Vérifier que l'utilisateur a fourni un email et un mot de passe
-    $validatedData = $request->validate([
-        'email' => 'required|email',
-        'mdp' => 'required',
-    ]);
-
-    // Trouver l'utilisateur dans la base de données en utilisant l'email
-    $user = User::where('email', $validatedData['email'])->first();
-
-    // Vérifier que l'utilisateur existe et que le mot de passe fourni correspond au mot de passe stocké dans la base de données
-    if ($user && Hash::check($validatedData['mdp'], $user->mdp)) {
-        // Authentifier l'utilisateur
-        Auth::login($user);
-        // Rediriger l'utilisateur vers la page d'accueil
-
+    {
+        $credentials = $request->only('email', 'password');
+    
+        if (Auth::attempt($credentials)) {
+            // Si les identifiants sont corrects, on crée une session pour l'utilisateur authentifié
+            $user = Auth::user();
+            $token = $user->createToken('authToken')->accessToken;
+    
+            return response()->json([
+                'status' => 'success',
+                // 'token' => $token
+            ]);
+        } else {
+            // Si les identifiants sont incorrects, on renvoie un message d'erreur
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Invalid email or password'
+            ], 401);
+        }
     }
-}
+
+    public function inscription(Request $request) {
+        
+    }
 
 
+
 }
+

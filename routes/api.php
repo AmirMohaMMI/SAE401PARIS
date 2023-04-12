@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/affichejoueurs/{idequipe}/{idjeu}' , [App\Http\Controllers\JOUEURSController::class, 'affichejoueurs']);
+Route::get('/affichejoueurs' , [App\Http\Controllers\JOUEURSController::class, 'affichejoueurs']);
 
 Route::get('/joueurs', [App\Http\Controllers\JOUEURSController::class, 'list']);
 
@@ -27,9 +27,11 @@ Route::get('/affichedetailsjoueur/{idjoueur}' , [App\Http\Controllers\JOUEURSCon
 
 Route::get('/equipes', [App\Http\Controllers\EQUIPEController::class, 'list']);
 
-Route::get('/utilisateur', [App\Http\Controllers\UTILISATEURController::class, 'list']);
+Route::post('/connexion', [App\Http\Controllers\UTILISATEURController::class, 'login']);
 
 Route::post('/adduti', [App\Http\Controllers\UTILISATEURController::class, 'ajoututi']);
+
+
 
 //// RENCONTRES 
 
