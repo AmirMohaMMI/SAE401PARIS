@@ -33,6 +33,8 @@ Route::post('/adduti', [App\Http\Controllers\UTILISATEURController::class, 'ajou
 
 //// RENCONTRES 
 
+Route::get('/getavrencontres', [App\Http\Controllers\RENCONTREController::class, 'AfficherRechRenc']);
+
 Route::get('/getrencontres', [App\Http\Controllers\RENCONTREController::class, 'ListeRencontres']);
 
 Route::post('/postrencontres', [App\Http\Controllers\RENCONTREController::class, 'AjouterRencontre']);

@@ -45,4 +45,26 @@ class UTILISATEURController extends Controller{
         }
     }
 
+
+    public function login(Request $request)
+{
+    // Vérifier que l'utilisateur a fourni un email et un mot de passe
+    $validatedData = $request->validate([
+        'email' => 'required|email',
+        'mdp' => 'required',
+    ]);
+
+    // Trouver l'utilisateur dans la base de données en utilisant l'email
+    $user = User::where('email', $validatedData['email'])->first();
+
+    // Vérifier que l'utilisateur existe et que le mot de passe fourni correspond au mot de passe stocké dans la base de données
+    if ($user && Hash::check($validatedData['mdp'], $user->mdp)) {
+        // Authentifier l'utilisateur
+        Auth::login($user);
+        // Rediriger l'utilisateur vers la page d'accueil
+
+    }
+}
+
+
 }
