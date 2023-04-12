@@ -15,6 +15,8 @@ $tournois = Tournois::select('idtournois','jeux','nom_tournois')->get();
 return response()->json($tournois);
 }
 
+public function AfficherRenc($idrencontre) {}
+
 //  AJOUTER UN TOURNOIS
 
 public function AjouterTournois(Request $request) {
