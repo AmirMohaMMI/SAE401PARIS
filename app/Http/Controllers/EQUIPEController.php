@@ -9,7 +9,7 @@ class EQUIPEController extends Controller{
 
     public function list(Request $request)
     {
-     $equipes = EQUIPE::select("idequipe", "nom")->get();          
+     $equipes = EQUIPE::select("logo", "nom")->get();          
     return response()->json($equipes);
     }
 
