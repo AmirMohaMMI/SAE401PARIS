@@ -11,4 +11,17 @@ class EQUIPE extends Model
     public $timestamps = false;
     protected $table = 'EQUIPE';
     protected $primaryKey = 'idequipe';
+
+    protected $fillable = [
+        "equipe1",
+        "equipe2",
+        "jeux",
+        "daterenc",
+        "cote_equipe1",
+        "cote_equipe2",
+        "idtournois"
+    ];
+
+
 }
+

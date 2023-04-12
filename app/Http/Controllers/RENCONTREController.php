@@ -1,17 +1,49 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\EQUIPE;
 use Illuminate\Http\Request;
 use App\Models\RENCONTRE;
 use Validator;
+use Illuminate\Support\Facades\Log;
 
 class RENCONTREController extends Controller {
 
-public function ListeRencontres(Request $request) {
+// public function ListeRencontres(Request $request) {
 
-    $rencontre = Rencontre::select('idrencontre','jeux','equipe1','equipe2', 'daterenc')->get();
-    return response()->json($rencontre);
+//     $rencontre = Rencontre::select('idrencontre','jeux','equipe1','equipe2', 'daterenc', 'equipe_gagnante')->first();
+//     $equipes=array();    
+//     Log::info("Categorie: " . $rencontre);
+//     // foreach($rencontre as $renc) {
+
+//             $equipes = Equipe::all()->where("idequipe", "=",$rencontre->equipe2);
+//         // }
+        
+
+    
+    
+//     return response()->json(["rencontre"=>$rencontre, "equipes"=>$equipes]);
+// }
+
+public function ListeRencontres(Request $request) {
+    $rencontre = Rencontre::select('idrencontre', 'jeux', 'equipe1', 'equipe2', 'daterenc', 'equipe_gagnante')->first();
+
+    $equipes1 = Equipe::all()->where('idequipe', '=', $rencontre->equipe1);
+    $equipes2 = Equipe::all()->where('idequipe', '=', $rencontre->equipe2);
+    $equipesGagnante = Equipe::all()->where('idequipe', '=', $rencontre->equipe_gagnante);
+
+    $equipes = array();
+    foreach ($equipes1 as $equipe) {
+        $equipes[] = $equipe->nom;
+    }
+    foreach ($equipes2 as $equipe) {
+        $equipes[] = $equipe->nom;
+    }
+    foreach ($equipesGagnante as $equipe) {
+        $equipes[] = $equipe->nom;
+    }
+    
+    return response()->json(["rencontre"=>$rencontre, "equipes"=>$equipes]);
 }
 
 public function AjouterRencontre(Request $request) {
