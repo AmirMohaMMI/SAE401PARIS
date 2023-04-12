@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 use App\Models\EQUIPE;
 use Illuminate\Http\Request;
 use App\Models\RENCONTRE;
@@ -50,9 +51,20 @@ public function AjouterRencontre(Request $request) {
         //     return response()->json(["status" => 0, "message" => $validator->errors()],400);
         //     }
 
-    $rencontre = new Rencontre;
-    
+        $lastRencontre = DB::table('RENCONTRE')->latest('idrencontre')->first();
 
+        // vérifier si l'enregistrement existe
+        if ($lastRencontre) {
+          // si oui, ajouter 1 à l'identifiant de la rencontre
+          $newIdRencontre = $lastRencontre->idrencontre + 1;
+        } else {
+          // si non, commencer à 1
+          $newIdRencontre = 1;
+        }
+        
+        // créer un nouvel enregistrement de la rencontre avec l'identifiant auto-incrémenté
+    $rencontre = new RENCONTRE;
+    $rencontre->idrencontre = $newIdRencontre;
     $rencontre->jeux = $request->jeux;
     $rencontre->equipe1 = $request->equipe1;
     $rencontre->equipe2 = $request->equipe2;
