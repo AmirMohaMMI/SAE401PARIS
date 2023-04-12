@@ -10,22 +10,17 @@ use Illuminate\Support\Facades\Log;
 class RENCONTREController extends Controller {
 
     public function ListeRencontres(Request $request) {
+
         $rencontre = Rencontre::select('idrencontre','jeux','equipe1','equipe2', 'daterenc', 'equipe_gagnante')->first();
-        $equipe1 = Equipe::where("idequipe", "=", $rencontre->equipe1)->get();
-        $equipe2 = Equipe::where("idequipe", "=", $rencontre->equipe2)->get();
-        $equipeGagnante = Equipe::where("idequipe", "=", $rencontre->equipe_gagnante)->get();
+        $equipes=array();    
+        Log::info("Categorie: " . $rencontre);
     
-        $equipes = collect([
-            "equipe1" => $equipe1,
-            "equipe2" => $equipe2,
-            "equipe_gagnante" => $equipeGagnante,
-        ]);
+                $equipes = Equipe::all()->where("idequipe", "=",$rencontre->equipe2);
+            
     
-        foreach ($equipes as $key => $equipe) {
-            Log::info("Equipe " . $key . ": " . $equipe);
-        }
-    
-        return response()->json(["rencontre" => $rencontre, "equipes" => $equipes]);
+        
+        
+        return response()->json(["rencontre"=>$rencontre, "equipes"=>$equipes]);
     }
 
 
