@@ -20,7 +20,7 @@ class UTILISATEURController extends Controller{
         $uti->email = $request->email;
         $uti->nom = $request->nom;
         $uti->prenom = $request->prenom;
-        $uti->mdp = $request->mdp;
+        $uti->password = $request->password;
         $uti->datecrea = $request->datecrea;
         $uti->pdp = $request->pdp;
         $uti->description = $request->description;
@@ -29,7 +29,7 @@ class UTILISATEURController extends Controller{
             'nom' => ['required','alpha'],
             'email' =>['required','email'],
             'prenom' =>['required','alpha'],
-            'mdp' =>['required','alpha_dash'],
+            'password' =>['required','alpha_dash'],
 
             ]);
             if ($validator->fails()) {
@@ -71,7 +71,7 @@ class UTILISATEURController extends Controller{
     }
 
     public function inscription(Request $request) {
-        
+
     }
 
 
