@@ -19,16 +19,16 @@ public function ListeRencontres(Request $request)
 {
     $rencontres = Rencontre::select('equipe1','equipe2','daterenc','cote_equipe1','cote_equipe2')->get();
     
-    $tableauRencontres = array();
-    
+    $tableauRencontres = [];
+
     foreach ($rencontres as $rencontre) {
-        $tableauRencontres[] = array(
+        array_push($tableauRencontres, [
             'equipe1' => $rencontre->equipe1,
             'equipe2' => $rencontre->equipe2,
             'daterenc' => $rencontre->daterenc,
             'cote_equipe1' => $rencontre->cote_equipe1,
             'cote_equipe2' => $rencontre->cote_equipe2,
-        );
+        ]);
     }
 
     return response()->json($tableauRencontres);
