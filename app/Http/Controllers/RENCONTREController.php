@@ -31,7 +31,7 @@ public function ListeRencontres(Request $request)
         );
     };
 
-    return response()->json(["tableauRencontre" =>$tableauRencontres]);
+    return response()->json(["tableauRencontre"=>array_values($tableauRencontres)]);
 }
 
 public function AjouterRencontre(Request $request) {
