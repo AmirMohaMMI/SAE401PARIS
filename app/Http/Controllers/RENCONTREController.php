@@ -9,18 +9,10 @@ use Illuminate\Support\Facades\Log;
 
 class RENCONTREController extends Controller {
 
-    public function ListeRencontres(Request $request) {
-
-        $rencontre = Rencontre::select('idrencontre','jeux','equipe1','equipe2', 'daterenc', 'equipe_gagnante')->first();
-        $equipes=array();    
-        Log::info("Categorie: " . $rencontre);
-    
-                $equipes = Equipe::all()->where("idequipe", "=",$rencontre->equipe2);
-            
-    
-        
-        
-        return response()->json(["rencontre"=>$rencontre, "equipes"=>$equipes]);
+    public function ListeRencontres(Request $request)
+    {
+    $rencontre = Rencontre::select('idrencontre','jeux','equipe1', 'equipe2', 'cote_equipe1', 'cote_equipe2')->get();
+    return response()->json($rencontre);
     }
 
 
@@ -48,7 +40,6 @@ public function AjouterRencontre(Request $request) {
     $rencontre->daterenc = $request->daterenc;
     $rencontre->cote_equipe1 = $request->cote_equipe1;
     $rencontre->cote_equipe2 = $request->cote_equipe2;
-    $rencontre->idtournois = $request->idtournois;
 
     $ok = $rencontre->save();
         if ($ok) {
