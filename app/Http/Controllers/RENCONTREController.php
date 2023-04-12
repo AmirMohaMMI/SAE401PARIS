@@ -29,9 +29,9 @@ public function ListeRencontres(Request $request)
             'cote_equipe1' => $rencontre->cote_equipe1,
             'cote_equipe2' => $rencontre->cote_equipe2,
         );
-    }
+    };
 
-    return response()->json($tableauRencontres);
+    return response()->json(["tableauRencontre" =>$tableauRencontres]);
 }
 
 public function AjouterRencontre(Request $request) {
