@@ -12,13 +12,13 @@ class RENCONTREController extends Controller {
 //Liste des rencontres
 // public function ListeRencontres(Request $request)
 // {
-// $rencontre = Rencontre::select('idequipe','equipe1','equipe2','daterenc','cote_equipe1','cote_equipe2')->get();
+// $rencontre = Rencontre::select('idrencontre','equipe1','equipe2','daterenc','cote_equipe1','cote_equipe2')->get();
 // return response()->json($rencontre);
 // }
 
 public function ListeRencontres(Request $request)
 {
-    $rencontres = Rencontre::select('idequipe','equipe1','equipe2','daterenc','cote_equipe1','cote_equipe2', 'jeux')->get();
+    $rencontres = Rencontre::select('idrencontre','equipe1','equipe2','daterenc','cote_equipe1','cote_equipe2', 'jeux')->get();
     
     $tableauRencontres = array();
     
