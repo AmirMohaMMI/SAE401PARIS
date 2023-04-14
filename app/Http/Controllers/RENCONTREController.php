@@ -24,6 +24,7 @@ public function ListeRencontres(Request $request)
     
     foreach ($rencontres as $rencontre) {
         $tableauRencontres[] = array(
+            'idrencontre' => $rencontre->idrencontre,
             'equipe1' => $rencontre->equipe1,
             'equipe2' => $rencontre->equipe2,
             'daterenc' => $rencontre->daterenc,
